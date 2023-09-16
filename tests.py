@@ -32,14 +32,16 @@ class TestBooksCollector:
         collector.set_book_genre('Гордость и предубеждение и зомби', 'Фантастика')
         assert collector.books_genre['Гордость и предубеждение и зомби'] == 'Фантастика'
 
-    def test_get_book_genre_valid_name_book_received(self):
+    @pytest.mark.parametrize('book, genre', [['Книга 1', 'Фантастика'], ['Книга 2', 'Ужасы'], ['Книга 3', 'Детективы'],
+                                             ['Книга 4', 'Мультфильмы'], ['Книга 5', 'Комедии']])
+    def test_get_book_genre_valid_name_book_received(self, book, genre):
         collector = BooksCollector()
-        collector.add_new_book('Гордость и предубеждение и зомби')
-        collector.set_book_genre('Гордость и предубеждение и зомби', 'Фантастика')
-        assert collector.get_book_genre('Гордость и предубеждение и зомби') == 'Фантастика'
+        collector.add_new_book(book)
+        collector.set_book_genre(book, genre)
+        assert collector.get_book_genre(book) == genre
 
     @pytest.mark.parametrize('book, genre', [['Книга 1', 'Фантастика'], ['Книга 2', 'Ужасы'], ['Книга 3', 'Детективы'],
-                       ['Книга 4', 'Мультфильмы'], ['Книга 5', 'Комедии']])
+                                             ['Книга 4', 'Мультфильмы'], ['Книга 5', 'Комедии']])
     def test_get_books_with_specific_genre_valid_genre_received(self, book, genre):
         collector = BooksCollector()
         collector.add_new_book(book)
@@ -53,13 +55,13 @@ class TestBooksCollector:
 
     def test_get_books_for_children_received(self):
         collector = BooksCollector()
-        collector.add_new_book('Гордость и предубеждение и зомби')
-        collector.add_new_book('Что делать, если ваш кот хочет вас убить')
-        collector.add_new_book('Ну, Погоди!')
-        collector.set_book_genre('Гордость и предубеждение и зомби', 'Детективы')
-        collector.set_book_genre('Что делать, если ваш кот хочет вас убить', 'Ужасы')
-        collector.set_book_genre('Ну, Погоди!', 'Мультфильмы')
-        assert collector.get_books_for_children() == ['Ну, Погоди!']
+        collector.add_new_book('Книга 1')
+        collector.add_new_book('Книга 2')
+        collector.add_new_book('Книга 3')
+        collector.set_book_genre('Книга 1', 'Фантастика')
+        collector.set_book_genre('Книга 2', 'Ужасы')
+        collector.set_book_genre('Книга 3', 'Детективы')
+        assert collector.get_books_for_children() == ['Книга 1']
 
     def test_add_book_in_favorites_added(self):
         collector = BooksCollector()
