@@ -1,1 +1,26 @@
-# qa_python
+test_add_new_book_add_two_books
+Проверка добавления новых книг в словарь books_genre
+
+test_set_book_genre_valid_genre_added
+Проверка установки жанра книги, добавленной в словарь books_genre
+
+test_get_book_genre_valid_name_book_received
+Проверка получения жанра книги по её имени из словаря books_genre
+
+test_get_books_with_specific_genre_valid_genre_received
+Проверка получения имени книги по её жанру из словаря books_genre
+
+test_get_books_genre_received
+Проверка получения текущего словарь books_genre
+
+test_get_books_for_children_received
+Проверка возвращает книги, которые подходят детям.
+
+test_add_book_in_favorites_added
+Проверка добавления книг в избранное
+
+test_delete_book_from_favorites_book_deleted
+Проверка удаления книг из списка избранное
+
+test_get_list_of_favorites_books_received
+Проверка получения списка избранных книг

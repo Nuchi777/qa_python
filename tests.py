@@ -48,7 +48,8 @@ class TestBooksCollector:
 
     def test_get_books_genre_received(self):
         collector = BooksCollector()
-        assert collector.get_books_genre() == {}
+        collector.add_new_book('Гордость и предубеждение и зомби')
+        assert collector.get_books_genre() == {'Гордость и предубеждение и зомби': ''}
 
     def test_get_books_for_children_received(self):
         collector = BooksCollector()
@@ -75,4 +76,6 @@ class TestBooksCollector:
 
     def test_get_list_of_favorites_books_received(self):
         collector = BooksCollector()
-        assert collector.get_list_of_favorites_books() == []
+        collector.add_new_book('Гордость и предубеждение и зомби')
+        collector.add_book_in_favorites('Гордость и предубеждение и зомби')
+        assert collector.get_list_of_favorites_books() == ['Гордость и предубеждение и зомби']
