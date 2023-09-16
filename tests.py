@@ -38,13 +38,13 @@ class TestBooksCollector:
         collector.set_book_genre('Гордость и предубеждение и зомби', 'Фантастика')
         assert collector.get_book_genre('Гордость и предубеждение и зомби') == 'Фантастика'
 
-    def test_get_books_with_specific_genre_valid_genre_received(self):
+    @pytest.mark.parametrize('book, genre', [['Книга 1', 'Фантастика'], ['Книга 2', 'Ужасы'], ['Книга 3', 'Детективы'],
+                       ['Книга 4', 'Мультфильмы'], ['Книга 5', 'Комедии']])
+    def test_get_books_with_specific_genre_valid_genre_received(self, book, genre):
         collector = BooksCollector()
-        collector.add_new_book('Гордость и предубеждение и зомби')
-        collector.add_new_book('Что делать, если ваш кот хочет вас убить')
-        collector.set_book_genre('Гордость и предубеждение и зомби', 'Фантастика')
-        collector.set_book_genre('Что делать, если ваш кот хочет вас убить', 'Ужасы')
-        assert collector.get_books_with_specific_genre('Фантастика') == ['Гордость и предубеждение и зомби']
+        collector.add_new_book(book)
+        collector.set_book_genre(book, genre)
+        assert collector.get_books_with_specific_genre(genre) == [book]
 
     def test_get_books_genre_received(self):
         collector = BooksCollector()
