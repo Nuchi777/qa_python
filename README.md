@@ -2,7 +2,13 @@ test_add_new_book_add_two_books
 Проверка добавления новых книг в словарь books_genre
 
 test_set_book_genre_valid_genre_added
-Проверка установки жанра книги, добавленной в словарь books_genre
+Проверка установки жанра книги, добавленной в словарь books_genre, с валидным жанром
+
+test_set_book_genre_not_valid_genre_not_added_genre
+Проверка установки жанра книги, добавленной в словарь books_genre, с не валидным жанром
+
+test_set_book_genre_valid_genre_without_book_in_books_genre_empty_dict
+Проверка установки жанра книги, не добавленной в словарь books_genre, с валидным жанром
 
 test_get_book_genre_valid_name_book_received
 Проверка получения жанра книги по её имени из словаря books_genre
@@ -13,11 +19,20 @@ test_get_books_with_specific_genre_valid_genre_received
 test_get_books_genre_received
 Проверка получения текущего словарь books_genre
 
-test_get_books_for_children_received
+test_get_books_for_children_books_not_in_age_rating_received
 Проверка возвращает книги, которые подходят детям.
 
+test_get_books_for_children_books_in_age_rating_empty_list
+Проверка не возвращает книги, которые не подходят детям.
+
 test_add_book_in_favorites_added
-Проверка добавления книг в избранное
+Проверка добавления книги в избранное, добавленной в словарь books_genre
+
+test_add_book_in_favorites_without_book_in_books_genre_empty_list
+Проверка добавления книги в избранное, не добавленной в словарь books_genre
+
+test_add_book_in_favorites_again_add_book_added_only_one_book
+Проверка повторного добавления книги в избранное, добавленной в словарь books_genre
 
 test_delete_book_from_favorites_book_deleted
 Проверка удаления книг из списка избранное
